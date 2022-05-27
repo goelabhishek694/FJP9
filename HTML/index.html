@@ -6,6 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Learning HTML</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+        h4{
+            color: lightgreen;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -14,18 +22,18 @@
 
     <h1>Heading 1 </h1>
     <h2>Heading 2</h2>
-    <h3>Heading 3</h3>
+    <h3 style="color: lightcoral;">Heading 3</h3>
     <h4>Heading 4</h4>
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
 
     <!-- paragraph tag -->
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quis necessitatibus a amet rem ipsam facere
+    <p style="font-size: 20px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quis necessitatibus a amet rem ipsam facere
         similique recusandae incidunt aperiam harum iure soluta doloremque. Quidem dolorum dolore nobis veniam facere?
     </p>
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quis necessitatibus a amet rem ipsam facere
+    <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quis necessitatibus a amet rem ipsam facere
         similique recusandae incidunt aperiam harum iure soluta doloremque. Quidem dolorum dolore nobis veniam facere?
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio, quis necessitatibus a amet rem ipsam facere
         similique recusandae incidunt aperiam harum iure soluta doloremque. Quidem dolorum dolore nobis veniam facere?
@@ -39,9 +47,9 @@
 
     <!-- division tag -->
     <!-- it helps in dividing of webpage  -->
-    <div>
-        <h1>What is HTML</h1>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem rerum natus veniam ratione non quasi asperiores iure totam quo tempora similique eos quibusdam, excepturi sequi nam minus minima exercitationem? Molestias.
+    <div >
+        <h1 style="color: lightblue;">What is HTML</h1>
+        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem rerum natus veniam ratione non quasi asperiores iure totam quo tempora similique eos quibusdam, excepturi sequi nam minus minima exercitationem? Molestias.
         Debitis explicabo officiis ad corporis, consequatur labore ducimus assumenda! Odit expedita fugit voluptates, reprehenderit laboriosam explicabo aspernatur corrupti ab molestias id nesciunt deserunt. Debitis, voluptatibus! Est eveniet voluptate maxime optio.
         Eveniet consectetur impedit, vitae aut harum quaerat at provident delectus placeat, sequi quis reiciendis consequuntur quos possimus quae illo vel dolor velit. Distinctio laudantium vel repellat, necessitatibus dolorum rem illum.
         </p>
@@ -90,6 +98,39 @@
     <!-- image tag is used to attach image in our webpage 
     it is a self closing tag--> 
     <img src="https://i.pinimg.com/originals/58/b1/80/58b180bcba5a92d7d95c58153c9ce5b21.png" alt="2 cats wearing hats">
+    <br> <!--break tag-->
+    <img src="./cat.jpeg" alt="2 cats wearing hats">
+    <br>
+    <img src="../cat2.jpeg" alt="2 cats wearing hats">
+
+    <!-- tables -->
+    <table border="6">
+        <caption>Student Details</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Roll No.</th>
+                <th>Education</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td >Bhavay</td>
+                <td>001</td>
+                <td>BBA</td>
+            </tr>
+            <tr>
+                <td>Saurabh</td>
+                <td>002</td>
+                <td>B.Tech.</td>
+            </tr>
+            <tr>
+                <td>Prashant</td>
+                <td>003</td>
+                <td>MBA</td>
+            </tr>
+        </tbody>
+    </table>
 </body>
 
 </html>
