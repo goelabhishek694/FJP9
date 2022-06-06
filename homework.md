@@ -15,3 +15,9 @@ https://www.freecodecamp.org/news/css-unit-guide/
 3/6/22
 
 https://flexboxfroggy.com/
+
+6/6/22
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/position
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
