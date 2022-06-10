@@ -21,3 +21,9 @@ https://flexboxfroggy.com/
 https://developer.mozilla.org/en-US/docs/Web/CSS/position
 
 https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
+
+10/6/22
+
+https://www.freecodecamp.org/news/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5/
+
+https://javascript.info/types
