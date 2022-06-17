@@ -27,3 +27,9 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements
 https://www.freecodecamp.org/news/whats-the-difference-between-javascript-and-ecmascript-cba48c73a2b5/
 
 https://javascript.info/types
+
+17/06/22
+
+https://javascript.info/alert-prompt-confirm
+
+https://javascript.info/string

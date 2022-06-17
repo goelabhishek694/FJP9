@@ -38,7 +38,7 @@ function calculator(operator, num1, num2) {
     }
 }
 
-let retFn = calculator("add", 3, 4);
+let retFn = calculator("add", 45, 46);
 console.log(retFn);
 let sumOfTwoNum = retFn();
 console.log(sumOfTwoNum);
