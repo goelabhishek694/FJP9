@@ -33,3 +33,5 @@ https://javascript.info/types
 https://javascript.info/alert-prompt-confirm
 
 https://javascript.info/string
+
+https://javascript.info/array
