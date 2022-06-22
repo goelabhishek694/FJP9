@@ -35,3 +35,9 @@ https://javascript.info/alert-prompt-confirm
 https://javascript.info/string
 
 https://javascript.info/array
+
+22/06/22
+
+https://javascript.info/object
+
+https://javascript.info/object-copy
