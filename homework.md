@@ -41,3 +41,9 @@ https://javascript.info/array
 https://javascript.info/object
 
 https://javascript.info/object-copy
+
+24/6/22
+
+https://javascript.info/object-copy
+
+https://javascript.info/switch
