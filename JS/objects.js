@@ -33,7 +33,8 @@ var captainAmerica = {
         country: "USA"
     },
     sayHi: function () {
-        console.log(`Hello my name is ${captainAmerica.firstName}`);
+        console.log(this);
+        console.log(`Hello my name is ${this.firstName}`);
     }
 };
 
