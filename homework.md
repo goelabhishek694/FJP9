@@ -51,3 +51,5 @@ https://javascript.info/switch
 29/6/22
 
 https://javascript.info/garbage-collection
+
+https://javascript.info/object-methods
