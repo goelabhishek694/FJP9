@@ -47,3 +47,7 @@ https://javascript.info/object-copy
 https://javascript.info/object-copy
 
 https://javascript.info/switch
+
+29/6/22
+
+https://javascript.info/garbage-collection
