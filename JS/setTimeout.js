@@ -43,3 +43,8 @@
 // }
 // a(); //1 2 3 4 5
 
+console.log("before");
+setTimeout(function cb (){
+    console.log("timer");
+}, 5000);
+console.log("after");
