@@ -43,8 +43,22 @@
 // }
 // a(); //1 2 3 4 5
 
+// console.log("before");
+// setTimeout(function cb (){
+//     console.log("timer");
+// }, 5000);
+// console.log("after");
+
 console.log("before");
-setTimeout(function cb (){
-    console.log("timer");
+setTimeout(function cb() {
+  console.log("timer");
 }, 5000);
+//promise
+fetch("https://api.netflix.com")
+    .then(function cb() {
+    console.log("yolo");
+});
 console.log("after");
+
+
+
