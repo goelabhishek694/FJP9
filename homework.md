@@ -53,3 +53,7 @@ https://javascript.info/switch
 https://javascript.info/garbage-collection
 
 https://javascript.info/object-methods
+
+6/07/22
+
+https://javascript.info/promise-chaining
