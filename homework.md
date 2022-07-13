@@ -57,3 +57,7 @@ https://javascript.info/object-methods
 6/07/22
 
 https://javascript.info/promise-chaining
+
+14/07/22
+
+https://javascript.info/polyfills
