@@ -61,4 +61,23 @@ var obj = {
 
 obj.square(); 
 
+//5
+function Name(fName, lName) {
+  // console.log(this);
+  this.firstName = fName;
+  this.lastName = lName;
+  // console.log(this);
+}
+
+var obj = new Name("Sunil", "Gavaskar");
+console.log(obj);
+//js creates a new object {}. 
+//js passes the object's refference to the function 
+//this-> {}
+
+// {
+//     firstName: "Sunil",
+//     lastName:"Gavaskar"
+// }
+
 
