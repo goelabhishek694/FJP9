@@ -35,21 +35,21 @@ welcome.call(cricketer2, "ravishas@gmail.com", 5551919191, "India");
 welcome.apply(cricketer2, ["ravishas@gmail.com", 5551919191, "India"]);
 
 //bind method-> same as call, but fn is be called explicitly
-let bindedFn = welcome.bind(cricketer2,"ravishas@gmail.com",5551919191,"India");
+var bindedFn = welcome.bind(cricketer2,"ravishas@gmail.com",5551919191,"India");
 // this->cricketer2
 bindedFn(); 
 
 
-let user = {
-  firstName: "John",
-  sayHi() {
-    console.log(`Hello, ${this.firstName}!`);
-  },
-};
+// let user = {
+//   firstName: "John",
+//   sayHi() {
+//     console.log(`Hello, ${this.firstName}!`);
+//   },
+// };
 
-setTimeout(function () {
-  user.sayHi();
-}, 1000);
+// setTimeout(function () {
+//   user.sayHi();
+// }, 1000);
 
 
 // let user = {
@@ -72,6 +72,29 @@ let car = {
     name: "Thar",
     brand:"Mahindra"
 }
+
+let carDescription = function (date,price) {
+  console.log(`I bought a new ${this.brand} ${this.name}
+  on ${date} for INR ${price}`);
+};
+
+// var bindedFn = carDescription.bind(car,"22 July","20lacs");
+// bindedFn();
+
+Function.prototype.myBind = function (...args) {
+  let fnObj = this;
+  let params = args.slice(1);
+  return function () {
+    fnObj.apply(args[0],params);
+  }
+}
+
+var myBindedFn = carDescription.myBind(car, "22 July", "20lacs");
+myBindedFn();
+
+
+
+
 
 
 
