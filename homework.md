@@ -61,3 +61,11 @@ https://javascript.info/promise-chaining
 14/07/22
 
 https://javascript.info/polyfills
+
+22/07/22
+
+https://javascript.info/type-conversions
+
+https://javascript.info/switch
+
+https://javascript.info/optional-chaining
