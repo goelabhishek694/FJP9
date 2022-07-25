@@ -61,7 +61,7 @@ body{
     height: 50vh;
     background-color: lightblue;
     width: 45vw;
-    display: flex;
+    display: none;
     position: absolute;
     top: calc((100vh - 50vh)/2);
     left: calc((100vw - 45vw)/2);

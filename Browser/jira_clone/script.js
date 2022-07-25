@@ -1,6 +1,8 @@
 // Returns the first element that matches selectors.
 let addBtn = document.querySelector(".add-btn");
-console.log(addBtn);
+let modalCont = document.querySelector(".modal-cont");
+// console.log(modalCont);
+
 
 var isModalPresent = false;
 addBtn.addEventListener("click", function () {
@@ -9,6 +11,7 @@ addBtn.addEventListener("click", function () {
 //              then display modal
     if (!isModalPresent) { 
         // display modal
+        modalCont.style.display = "flex";
     }
     
     
@@ -17,9 +20,8 @@ addBtn.addEventListener("click", function () {
 
     else if(isModalPresent) {
         // display none
+        modalCont.style.display = "none";
     }
 
     isModalPresent = !isModalPresent;
-    
-    
 })
