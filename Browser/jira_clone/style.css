@@ -93,3 +93,39 @@ body{
     width: 40%;
 
  }
+
+ .ticket-cont{
+    height:12rem;
+    width:15rem;
+    background-color:#f1f2f6;
+ }
+
+ .ticket-color{
+    height:1rem;
+ }
+
+ .ticket-id{
+    height: 2rem;
+    background-color: red;
+ }
+
+ .task-area{
+    height: calc(100% - 1rem - 2rem );
+    font-size :1.5rem;
+ }
+
+ .ticket-lock{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -29px;
+    margin-right: 11px;
+    font-size: 1.5rem;
+ }
+
+ .main-cont{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 2rem;
+ }
