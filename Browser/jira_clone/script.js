@@ -7,6 +7,12 @@ const textArea = document.querySelector(".textarea-cont");
 const colors = ["lightpink", "lightgreen", "lightblue", "black"];
 let modalPriorityColor = colors[colors.length - 1]; //black
 const mainCont = document.querySelector(".main-cont");
+const allPriorityColors = document.querySelectorAll(".priority-color");
+console.log(allPriorityColors);
+
+
+
+
 
 var isModalPresent = false;
 addBtn.addEventListener("click", function (e) {
@@ -57,3 +63,32 @@ function createTicket(ticketColor, data) {
     `;
   mainCont.appendChild(ticketCont);
 }
+
+allPriorityColors.forEach(colorElement => {
+    colorElement.addEventListener("click", function () {
+        allPriorityColors.forEach(el => {
+            el.classList.remove("active");
+        })
+        colorElement.classList.add("active");
+        modalPriorityColor = colorElement.classList[0];
+    })
+});
+
+// let div = document.createElement("div");
+// let p = document.createElement("p");
+// let a = document.createElement("a");
+// let img = document.createElement("img");
+// div.append("hello");
+// {/* <div>hello</div>; */}
+// div.append(p,a,img);
+
+
+// <div>
+//     <p></p>
+//     <a></a>
+//     <img></img>
+// </div>
+
+// div.append("hello"); //wont work, error 
+// div.appendChild(p, a, img); // only paragraph tag will pe appended rest will be ignored 
+
