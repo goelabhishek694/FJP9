@@ -1,6 +1,7 @@
 var uid = new ShortUniqueId();
 // Returns the first element that matches selectors.
 const addBtn = document.querySelector(".add-btn");
+console.log(addBtn);
 const modalCont = document.querySelector(".modal-cont");
 const textArea = document.querySelector(".textarea-cont");
 // console.log(modalCont);
@@ -11,8 +12,8 @@ const allPriorityColors = document.querySelectorAll(".priority-color");
 console.log(allPriorityColors);
 const toolBoxColors = document.querySelectorAll(".toolbox-color-cont>*");
 let ticketsArr = [];
-
-
+const removeBtn = document.querySelector(".fa-xmark");
+console.log(removeBtn);
 var isModalPresent = false;
 addBtn.addEventListener("click", function (e) {
   console.log(e);
@@ -71,6 +72,8 @@ function createTicket(ticketColor, data, ticketId) {
     });
     localStorage.setItem("tickets", JSON.stringify(ticketsArr));
   }
+
+  handleRemoval(ticketCont,id);
 }
 
 //getting data from localStorage, for re rendering of tickets
@@ -90,7 +93,6 @@ allPriorityColors.forEach(colorElement => {
 });
 
 
-
 //geting tickets on the basis of ticketColor
 for (let i = 0; i < toolBoxColors.length; i++) {
   toolBoxColors[i].addEventListener("click", function () {
@@ -105,4 +107,74 @@ for (let i = 0; i < toolBoxColors.length; i++) {
     //display filtered tickets 
     filteredTickets.forEach(ticket => createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketId));
   })
+
+  //display all the tickets of all priorities on double clicking any priorityColor
+  toolBoxColors[i].addEventListener("dblclick", function () {
+    
+    //remove tickets of specific color from UI
+    let allTickets = document.querySelectorAll(".ticket-cont");
+    allTickets.forEach((ticket) => ticket.remove());
+
+    //display all tickets
+    ticketsArr.forEach(ticket => createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketId));
+  })
+}
+
+var isRemoveBtnActive = false;
+removeBtn.addEventListener("click", function () {
+  console.log("in btn");
+  //    case 1 -> if removeBtn is not active
+  //              then make it active i.e. red color
+  if (!isRemoveBtnActive) {
+    // display modal
+    console.log("inside not active");
+    removeBtn.style.color = "red";
+  }
+
+  // case 2 -> if removeBtn is active
+  //           then make it inactive i.e. white color
+  else if (isRemoveBtnActive) {
+    // display none
+    console.log("inside active");
+    removeBtn.style.color = "white";
+  }
+
+  isRemoveBtnActive = !isRemoveBtnActive;
+});
+
+function handleRemoval(ticketCont,id){
+  ticketCont.addEventListener("click", function () {
+    if (!isRemoveBtnActive) return;
+
+    //remove from ticketsArr
+    let idx = getTicketIdx(id);
+    console.log(idx);
+    ticketsArr.splice(idx, 1);
+    console.log(ticketsArr);
+    //set in local storage
+    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+    //remove from frontend
+    ticketCont.remove();
+  });
+}
+
+// function getTicketIdx(id) {
+  
+//   return ticketsArr.forEach(ticketObj => {
+    
+//     if (ticketObj.ticketId == id) {
+      
+//       let idx = ticketsArr.indexOf(ticketObj);
+//       return idx;
+//     }
+    
+//   })
+  
+// }
+
+function getTicketIdx(id) { 
+  let idx = ticketsArr.findIndex(ticketObj => {
+    return ticketObj.ticketId==id
+  })
+  return idx;
 }
