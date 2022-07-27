@@ -45,3 +45,19 @@ cars.length = 3;
 console.log(cars);
 
 
+const months = ["Jan", "March", "April", "June"];
+//index, num of elements to remove strating from index, things to add starting at index
+
+//removing from array 
+months.splice(1, 2);
+console.log(months);
+
+//adding in array 
+months.splice(1, 0, "Feb", "March", "April", "May")
+console.log(months);
+
+
+//removing and adding into array 
+months.splice(1, 3, "July", "Aug", "Sept", "Oct");
+console.log(months);
+
