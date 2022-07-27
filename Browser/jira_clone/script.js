@@ -9,9 +9,8 @@ let modalPriorityColor = colors[colors.length - 1]; //black
 const mainCont = document.querySelector(".main-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
 console.log(allPriorityColors);
-
-
-
+const toolBoxColors = document.querySelectorAll(".toolbox-color-cont>*");
+let ticketsArr = [];
 
 
 var isModalPresent = false;
@@ -35,7 +34,7 @@ addBtn.addEventListener("click", function (e) {
 });
 
 modalCont.addEventListener("keydown", function (e) {
-  console.log(e);
+  // console.log(e);
   if (e.key == "Shift") {
     //1 call createTicket()
     console.log(textArea.value);
@@ -47,9 +46,9 @@ modalCont.addEventListener("keydown", function (e) {
   }
 });
 
-function createTicket(ticketColor, data) {
+function createTicket(ticketColor, data, ticketId) {
   //generate uid
-  let id = uid();
+  let id = ticketId || uid();
 
   let ticketCont = document.createElement("div");
   ticketCont.setAttribute("class", "ticket-cont");
@@ -62,6 +61,22 @@ function createTicket(ticketColor, data) {
         </div>
     `;
   mainCont.appendChild(ticketCont);
+
+  //if ticket is being generated for the first time save it in local Storage
+  if (!ticketId) {
+    ticketsArr.push({
+      ticketId: id,
+      ticketColor,
+      ticketTask: data,
+    });
+    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+  }
+}
+
+//getting data from localStorage, for re rendering of tickets
+if (localStorage.getItem("tickets")) {
+  ticketsArr = JSON.parse(localStorage.getItem("tickets"));
+  ticketsArr.forEach(ticketObj => createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketId))
 }
 
 allPriorityColors.forEach(colorElement => {
@@ -74,21 +89,20 @@ allPriorityColors.forEach(colorElement => {
     })
 });
 
-// let div = document.createElement("div");
-// let p = document.createElement("p");
-// let a = document.createElement("a");
-// let img = document.createElement("img");
-// div.append("hello");
-// {/* <div>hello</div>; */}
-// div.append(p,a,img);
 
 
-// <div>
-//     <p></p>
-//     <a></a>
-//     <img></img>
-// </div>
+//geting tickets on the basis of ticketColor
+for (let i = 0; i < toolBoxColors.length; i++) {
+  toolBoxColors[i].addEventListener("click", function () {
+    let currColor = toolBoxColors[i].classList[0];
+    let filteredTickets = ticketsArr.filter(ticketObj => ticketObj.ticketColor == currColor);
+    console.log(filteredTickets);
 
-// div.append("hello"); //wont work, error 
-// div.appendChild(p, a, img); // only paragraph tag will pe appended rest will be ignored 
+    //remove all tickets
+    let allTickets = document.querySelectorAll(".ticket-cont");
+    allTickets.forEach(ticket => ticket.remove());
 
+    //display filtered tickets 
+    filteredTickets.forEach(ticket => createTicket(ticket.ticketColor, ticket.ticketTask, ticket.ticketId));
+  })
+}
