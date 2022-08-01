@@ -87,7 +87,9 @@ function createTicket(ticketColor, data, ticketId) {
 //getting data from localStorage, for re rendering of tickets
 if (localStorage.getItem("tickets")) {
   ticketsArr = JSON.parse(localStorage.getItem("tickets"));
-  ticketsArr.forEach(ticketObj => createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketId))
+  ticketsArr.forEach(ticketObj => {
+    createTicket(ticketObj.ticketColor, ticketObj.ticketTask, ticketObj.ticketId)
+  })
 }
 
 allPriorityColors.forEach(colorElement => {
@@ -213,8 +215,39 @@ function handlePriorityColor(ticketCont, id) {
   });
 }
 //unlock class->fa-lock-open
+const unlock = "fa-lock-open";
 function handleLock(ticketCont, id) {
-  
+  let ticketLock = ticketCont.querySelector(".ticket-lock");
+  let lock = ticketLock.children[0].classList[1];
+  let ticketTaskArea = ticketCont.querySelector(".task-area");
+
+  ticketLock.addEventListener("click", function () {
+    if (ticketLock.children[0].classList.contains(lock)) {
+      //remove lock class
+      ticketLock.children[0].classList.remove(lock);
+      //add unlock class 
+      ticketLock.children[0].classList.add(unlock);
+
+      //make content editable 
+      ticketTaskArea.setAttribute("contenteditable", "true");
+    }
+
+    else if (ticketLock.children[0].classList.contains(unlock)) {
+      //add lock class
+      ticketLock.children[0].classList.add(lock);
+      //remove unlock class
+      ticketLock.children[0].classList.remove(unlock);
+
+      ////make content non editable
+      ticketTaskArea.setAttribute("contenteditable", "false");
+    }
+
+    let idx = getTicketIdx(id);
+    console.log(ticketTaskArea.textContent);
+    ticketsArr[idx].ticketTask = ticketTaskArea.textContent;
+    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+    
+  })
 }
 
 
