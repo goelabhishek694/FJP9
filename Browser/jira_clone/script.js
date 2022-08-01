@@ -14,6 +14,12 @@ const toolBoxColors = document.querySelectorAll(".toolbox-color-cont>*");
 let ticketsArr = [];
 const removeBtn = document.querySelector(".fa-xmark");
 console.log(removeBtn);
+
+// const allTickets = document.querySelector(".main-cont");
+// console.log(allTickets);
+
+
+
 var isModalPresent = false;
 addBtn.addEventListener("click", function (e) {
   console.log(e);
@@ -73,7 +79,9 @@ function createTicket(ticketColor, data, ticketId) {
     localStorage.setItem("tickets", JSON.stringify(ticketsArr));
   }
 
-  handleRemoval(ticketCont,id);
+  handleRemoval(ticketCont, id);
+  handlePriorityColor(ticketCont, id);
+  handleLock(ticketCont,id);
 }
 
 //getting data from localStorage, for re rendering of tickets
@@ -120,6 +128,7 @@ for (let i = 0; i < toolBoxColors.length; i++) {
   })
 }
 
+//toggling the remove btn 
 var isRemoveBtnActive = false;
 removeBtn.addEventListener("click", function () {
   console.log("in btn");
@@ -142,6 +151,7 @@ removeBtn.addEventListener("click", function () {
   isRemoveBtnActive = !isRemoveBtnActive;
 });
 
+//helps in removing the ticket from frontend and saving in localStorage
 function handleRemoval(ticketCont,id){
   ticketCont.addEventListener("click", function () {
     if (!isRemoveBtnActive) return;
@@ -172,9 +182,42 @@ function handleRemoval(ticketCont,id){
   
 // }
 
+
+//retuns the index of ticket present in ticketsArr
 function getTicketIdx(id) { 
   let idx = ticketsArr.findIndex(ticketObj => {
     return ticketObj.ticketId==id
   })
   return idx;
 }
+
+//change the priority of the ticketColor in ticketCont 
+function handlePriorityColor(ticketCont, id) {
+  let ticketColor = ticketCont.querySelector(".ticket-color");
+
+  //addevemt listener of type click on  ticketColor
+  ticketColor.addEventListener("click", function () {
+    let currTicketColor = ticketColor.classList[1]; //lightpink
+    let currTicketColorIdx = colors.indexOf(currTicketColor); //0
+    let newTicketColorIdx = (currTicketColorIdx + 1)%colors.length; //1
+    let newTicketColor = colors[newTicketColorIdx]; //lightgreen
+    ticketColor.classList.remove(currTicketColor); //lightpink class removed
+    ticketColor.classList.add(newTicketColor); //lightgreen class added
+
+    //update local storage
+    let idx = getTicketIdx(id);
+    //update the newticketcolor in ticketArr
+    ticketsArr[idx].ticketColor = newTicketColor;
+    //set in local storage
+    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+  });
+}
+//unlock class->fa-lock-open
+function handleLock(ticketCont, id) {
+  
+}
+
+
+
+
+
