@@ -1,7 +1,7 @@
 var uid = new ShortUniqueId();
 // Returns the first element that matches selectors.
 const addBtn = document.querySelector(".add-btn");
-console.log(addBtn);
+// console.log(addBtn);
 const modalCont = document.querySelector(".modal-cont");
 const textArea = document.querySelector(".textarea-cont");
 // console.log(modalCont);
@@ -9,11 +9,11 @@ const colors = ["lightpink", "lightgreen", "lightblue", "black"];
 let modalPriorityColor = colors[colors.length - 1]; //black
 const mainCont = document.querySelector(".main-cont");
 const allPriorityColors = document.querySelectorAll(".priority-color");
-console.log(allPriorityColors);
+// console.log(allPriorityColors);
 const toolBoxColors = document.querySelectorAll(".toolbox-color-cont>*");
 let ticketsArr = [];
 const removeBtn = document.querySelector(".fa-xmark");
-console.log(removeBtn);
+// console.log(removeBtn);
 
 // const allTickets = document.querySelector(".main-cont");
 // console.log(allTickets);
