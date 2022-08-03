@@ -1,0 +1,53 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    padding: 0;
+}
+
+.video-cont{
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+}
+
+video{
+    height:100%;
+    width:100%;
+}
+.action-cont{
+    height: 12rem;
+    width: 5rem;
+    /* background-color: blue; */
+    position: absolute;
+    top: calc( (100vh - 12rem ) / 2);
+    left: calc( 100vw - 10rem );
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.action-cont>*{
+    height:5rem;
+    border: 5px solid white ;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.record-btn{
+    background-color: red;
+    height: 3rem;
+    width:3rem;
+    border-radius: 50%;
+}
+
+.capture-btn{
+    background-color: white;
+    height: 3rem;
+    width:3rem;
+    border-radius: 50%;
+}
