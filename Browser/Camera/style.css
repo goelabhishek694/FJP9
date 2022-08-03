@@ -107,3 +107,38 @@ video{
 .gallery:hover{
     cursor: pointer;
 }
+
+
+.scale-capture{
+    animation-name: scale-capture;
+    /* animation-iteration-count: 1; */
+    animation-duration: 1s;
+}
+
+@keyframes scale-capture{
+    0%{
+        transform: scale(0.8);
+    }
+
+    100%{
+        transform: scale(1.1);
+    }
+}
+
+.scale-record{
+    animation-name: scale-record;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+}
+
+@keyframes scale-record{
+    0%{
+        transform: scale(0.8);
+    }
+    50%{
+        transform: scale(1.2);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
