@@ -51,3 +51,59 @@ video{
     width:3rem;
     border-radius: 50%;
 }
+
+.timer-cont{
+    position: absolute;
+    bottom:10rem;
+    left: 3rem;
+    color: white;
+}
+
+.timer{
+    display:none
+}
+
+.filter-cont{
+    position: absolute;
+    height: 16rem;
+    width: 5rem;
+    top:calc((100vh - 12rem)/2);
+    left:3rem;
+    background-color: aquamarine;
+}
+
+.filter{
+    height: 4rem;
+    background-image: url(https://picsum.photos/seed/picsum/200/300);
+    /* background-position: center; */
+    background-size: 100% 100%;
+    background-blend-mode:color-burn ;
+}
+
+.brown{
+    background-color: #ffa50052;
+}
+.orange{
+    background-color: #a52a2a59;
+}
+.pink{
+    background-color: #ffc0cb57;
+}
+.transparent{
+    background-color:transparent;
+}
+
+.material-icons{
+    color: white;
+    font-size: 3rem;
+}
+
+.gallery{
+    position: absolute;
+    bottom: 10rem;
+    right:5.25rem;
+}
+
+.gallery:hover{
+    cursor: pointer;
+}
