@@ -5,7 +5,7 @@ let captureBtnCont=document.querySelector(".capture-btn-cont")
 let timerCont = document.querySelector(".timer-cont");
 let timer = document.querySelector(".timer");
 let video = document.querySelector("video");
-
+let filterColor = "transparent";
 let constraints = {
     video: true,
     audio: true
@@ -97,7 +97,37 @@ function stopTimer() {
 
 captureBtnCont.addEventListener("click", function(){
     captureBtn.classList.add("scale-capture");
+    //canvas 
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext("2d");
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    ctx.fillStyle = filterColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
+
+
+    let image = canvas.toDataURL("image/jpeg");
+
+     let a = document.createElement("a");
+     a.href = image;
+     a.download = "myPic.jpeg";
+     a.click();
+
     setTimeout(() => {
         captureBtn.classList.remove("scale-capture")
     },1000)
 })
+
+let allFilters = document.querySelectorAll(".filter");
+let filterLayer = document.querySelector(".filter-layer");
+
+allFilters.forEach((filterEle) => {
+    filterEle.addEventListener("click", () => {
+        filterColor = window.getComputedStyle(filterEle).getPropertyValue('background-color');
+        filterLayer.style.backgroundColor = filterColor;
+    });
+});
