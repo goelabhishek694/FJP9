@@ -21,9 +21,9 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     mediaRecorder.addEventListener("start", () => {
         console.log("rec started");
     });
-
     mediaRecorder.addEventListener("dataavailable", (e) => {
-        chunks.push(e.data);
+        chunks.push(e.data); 
+        //single blob of video created
         
     })
 
@@ -44,12 +44,14 @@ let isRecording = false;
 recordBtnCont.addEventListener("click", function () {
     if (!isRecording) {
         //we have to record 
-         mediaRecorder.start();
+        mediaRecorder.start();
+        startTimer();
         recordBtn.classList.add("scale-record");
         timer.style.display = "block";
     } else {
         //stop the recording 
         mediaRecorder.stop();
+        stopTimer();
         recordBtn.classList.remove("scale-record");
         timer.style.display = "none";
     }
@@ -57,6 +59,39 @@ recordBtnCont.addEventListener("click", function () {
     isRecording = !isRecording;
   
 });
+
+let counter = 0;
+let timerID;
+function startTimer() {
+    timer.style.display = "block";
+    function displayTimer() {
+        let totalSeconds = counter;
+
+        let hours = Number.parseInt(totalSeconds / 3600);
+        totalSeconds = totalSeconds % 3600;
+
+        let minutes = Number.parseInt(totalSeconds / 60);
+        totalSeconds = totalSeconds % 60;
+
+        let seconds = totalSeconds;
+
+        hours = hours < 10 ? `0${hours}` : hours;
+        minutes = minutes < 10 ? `0${minutes}` : minutes;
+        seconds = seconds < 10 ? `0${seconds}` : seconds;
+
+        timer.innerText = `${hours}:${minutes}:${seconds}`;
+
+        counter++;
+    }
+    timerID=setInterval(displayTimer, 1000);
+
+}
+
+function stopTimer() {
+    clearInterval(timerID);
+    timer.innerText = "00:00:00";
+    timer.style.display = "none";
+}
 
 
 
