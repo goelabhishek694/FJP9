@@ -69,3 +69,11 @@ https://javascript.info/type-conversions
 https://javascript.info/switch
 
 https://javascript.info/optional-chaining
+
+10/08/2022
+
+https://www.thoughtco.com/why-use-html5-canvas-3467995
+
+16/08/22
+
+https://javascript.info/script-async-defer
