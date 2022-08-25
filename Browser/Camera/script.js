@@ -126,7 +126,6 @@ captureBtnCont.addEventListener("click", function(){
       let imageEntry = {
         id: `img-${imageID}`,
         url: imageURL,
-        time:getDate()
       };
       let addRequest = imageStore.add(imageEntry);
       addRequest.onsuccess = function () {
