@@ -140,7 +140,7 @@ captureBtnCont.addEventListener("click", function(){
       let dbTransaction=db.transaction("image", "readwrite");
       let imageStore = dbTransaction.objectStore("image");
       let imageEntry = {
-        id: imageID,
+        id: `img-${imageID}`,
         url: imageURL,
       };
       let addRequest = imageStore.add(imageEntry);
