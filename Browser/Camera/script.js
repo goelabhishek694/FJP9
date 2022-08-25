@@ -6,7 +6,7 @@ const captureBtnCont=document.querySelector(".capture-btn-cont")
 const timerCont = document.querySelector(".timer-cont");
 const timer = document.querySelector(".timer");
 const video = document.querySelector("video");
-const filterColor = "transparent";
+let filterColor = "transparent";
 const gallery = document.querySelector(".gallery");
 const constraints = {
     video: true,
@@ -34,11 +34,6 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
          let blob = new Blob(chunks, { type: "video/mp4" });
          let videoURL = URL.createObjectURL(blob);
          console.log(videoURL);
-
-        //  let a = document.createElement("a");
-        //  a.href = videoURL;
-        //  a.download="myVideo.mp4"
-        //  a.click();
          if (db) {
              let videoID = uid();
              let dbTransaction=db.transaction("video", "readwrite");
@@ -112,8 +107,6 @@ function stopTimer() {
     timer.style.display = "none";
 }
 
-
-
 captureBtnCont.addEventListener("click", function(){
     captureBtn.classList.add("scale-capture");
     //canvas 
@@ -130,11 +123,6 @@ captureBtnCont.addEventListener("click", function(){
 
 
     let imageURL = canvas.toDataURL("image/jpeg");
-
-    //  let a = document.createElement("a");
-    //  a.href = image;
-    //  a.download = "myPic.jpeg";
-    // a.click();
     if (db) {
       let imageID = uid();
       let dbTransaction=db.transaction("image", "readwrite");
@@ -142,6 +130,7 @@ captureBtnCont.addEventListener("click", function(){
       let imageEntry = {
         id: `img-${imageID}`,
         url: imageURL,
+        time:getDate()
       };
       let addRequest = imageStore.add(imageEntry);
       addRequest.onsuccess = function () {
@@ -159,6 +148,7 @@ let filterLayer = document.querySelector(".filter-layer");
 
 allFilters.forEach((filterEle) => {
     filterEle.addEventListener("click", () => {
+        console.log("inside filterEle");
         filterColor = window.getComputedStyle(filterEle).getPropertyValue('background-color');
         filterLayer.style.backgroundColor = filterColor;
     });
