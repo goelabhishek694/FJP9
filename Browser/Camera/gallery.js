@@ -11,11 +11,11 @@ setTimeout(() => {
     let imageRequest = imageStore.getAll();
     imageRequest.onsuccess = function () {
       if (imageRequest.result !== undefined) {
-        console.log("Images", imageRequest.result);
+        // console.log("Images", imageRequest.result);
         let imageResult = imageRequest.result;
         imageResult.forEach((imageObj) => {
           //create a img container
-          console.log(imageObj);
+          // console.log(imageObj);
           let url = imageObj.url;
           var imageEle = document.createElement("div");
           imageEle.setAttribute("class", "media-cont");
@@ -37,7 +37,7 @@ setTimeout(() => {
           downloadBtn.addEventListener("click", downloadListener);
         });
       } else {
-        console.log("No such images");
+        // console.log("No such images");
       }
     };
 
@@ -75,10 +75,10 @@ setTimeout(() => {
 function deleteListener(e) {
   //get id from e
   let id = e.target.parentElement.getAttribute("id");
-  console.log(id);
+  // console.log(id);
   //find id belongs to which store
   let mediaType = id.split("-")[0]; //img
-  console.log(mediaType);
+  // console.log(mediaType);
   // go into the db of video/img
   //delete it
   if (mediaType == "img") {
@@ -97,10 +97,10 @@ function deleteListener(e) {
 
 function downloadListener(e) {
   let id = e.target.parentElement.getAttribute("id");
-  console.log(id);
+  // console.log(id);
   //find id belongs to which store
   let mediaType = id.split("-")[0]; //img
-  console.log(mediaType);
+  // console.log(mediaType);
   // go into the db of video/img
   //delete it
   if (mediaType == "img") {

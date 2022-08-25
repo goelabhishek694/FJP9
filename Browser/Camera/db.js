@@ -1,14 +1,14 @@
 let openRequest = indexedDB.open("myDatabase");
 let db;
 openRequest.addEventListener("success", () => {
-    console.log("connection successfull");
+    // console.log("connection successfull");
     db=openRequest.result;
 })
 
 openRequest.addEventListener("upgradeneeded" , ()=> {
   // triggers if the client had no database
   // ...perform initialization...
-    console.log("db upgraded OR initalisation in db ");
+    // console.log("db upgraded OR initalisation in db ");
     db = openRequest.result;
 
     db.createObjectStore("video", { keyPath:"id" });

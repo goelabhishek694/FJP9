@@ -21,7 +21,7 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     mediaRecorder = new MediaRecorder(stream);
 
     mediaRecorder.addEventListener("start", () => {
-        console.log("rec started");
+        chunks = [];
     });
     mediaRecorder.addEventListener("dataavailable", (e) => {
         chunks.push(e.data); 
@@ -30,10 +30,9 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
     })
 
      mediaRecorder.addEventListener("stop", () => {
-         console.log("rec stopped");
          let blob = new Blob(chunks, { type: "video/mp4" });
          let videoURL = URL.createObjectURL(blob);
-         console.log(videoURL);
+       
          if (db) {
              let videoID = uid();
              let dbTransaction=db.transaction("video", "readwrite");
@@ -44,10 +43,7 @@ navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
              };
              let addRequest = videoStore.add(videoEntry); 
              addRequest.onsuccess = function () {
-               console.log(
-                 "videoEntry added to the videoStore",
-                 addRequest.result
-               );
+               
              };
 
          }
@@ -134,7 +130,6 @@ captureBtnCont.addEventListener("click", function(){
       };
       let addRequest = imageStore.add(imageEntry);
       addRequest.onsuccess = function () {
-        console.log("imageEntry added to the imageStore", addRequest.result);
       };
     }
 
@@ -148,7 +143,6 @@ let filterLayer = document.querySelector(".filter-layer");
 
 allFilters.forEach((filterEle) => {
     filterEle.addEventListener("click", () => {
-        console.log("inside filterEle");
         filterColor = window.getComputedStyle(filterEle).getPropertyValue('background-color');
         filterLayer.style.backgroundColor = filterColor;
     });
