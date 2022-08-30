@@ -77,3 +77,6 @@ https://www.thoughtco.com/why-use-html5-canvas-3467995
 16/08/22
 
 https://javascript.info/script-async-defer
+
+30/08/2022
+https://javascript.info/async
