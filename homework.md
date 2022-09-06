@@ -80,3 +80,11 @@ https://javascript.info/script-async-defer
 
 30/08/2022
 https://javascript.info/async
+
+6/9/22
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment
+
+https://javascript.info/destructuring-assignment
+
+https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
