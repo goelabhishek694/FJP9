@@ -81,3 +81,5 @@ console.log(obj);
 // }
 
 
+//this in case of arrow functions 
+
