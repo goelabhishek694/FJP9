@@ -92,3 +92,5 @@ https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-dee
 08/09/2022
 
 https://www.sqltutorial.org/
+
+https://javascript.info/script-async-defer
