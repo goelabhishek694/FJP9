@@ -83,3 +83,97 @@ console.log(obj);
 
 //this in case of arrow functions 
 
+let group = {
+  title: "Our Group",
+  students: ["John", "Pete", "Alice"],
+
+  showList() {
+      this.students.forEach(
+          (student) => {
+              alert(this.title + ": " + student)
+          }
+      );
+    },
+};
+//in arrow fn does not have its own 'this' , it points to 'this' outside itself.
+group.showList(); //our group:john , our group:pete  our group:alice
+
+let group = {
+  title: "Our Group",
+  students: ["John", "Pete", "Alice"],
+
+  showList() {
+      this.students.forEach(
+          function (student) {
+              alert(this.title + ": " + student) //this here is undefined , error -> cannot access title of undefined 
+          }
+      );
+    },
+};
+
+group.showList(); //our group:john , our group:pete  our group:alice
+
+let user = { name: "John" };
+let admin = { name: "Admin" };
+
+function sayHi() {
+  alert( this.name );
+}
+
+// use the same function in two objects
+user.f = sayHi;
+// {
+//     name: "John",
+//         f:function sayHi() {
+//   alert( this.name );
+// }
+// };
+admin.f = sayHi;
+// {
+//     name: "Admin",
+//         f:function sayHi() {
+//   alert( this.name );
+// }
+
+// these calls have different this
+// "this" inside the function is the object "before the dot"
+user.f(); // John  (this == user)
+admin.f(); // Admin  (this == admin)
+
+admin['f'](); // Admin (dot or square brackets access the method – doesn't matter)
+
+let user = {
+  firstName: "Ilya",
+  sayHi() {
+    let arrow = () => alert(this.firstName);
+    arrow();
+  }
+};
+user.sayHi(); // Ilya
+
+
+let user = {
+  firstName: "Ilya",
+  sayHi() {
+      function arrow() {
+          console.log("hello",this);
+          alert(this.firstName) //this points to window 
+      };
+    arrow();
+  }
+};
+user.sayHi(); // undefined
+
+
+
+let firstName = "Ilya";
+  function sayHi() {
+      function arrow() {
+          alert(firstName)
+      };
+    arrow();
+  }
+sayHi(); // Ilya
+
+
+

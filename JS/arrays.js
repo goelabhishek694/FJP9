@@ -61,3 +61,5 @@ console.log(months);
 months.splice(1, 3, "July", "Aug", "Sept", "Oct");
 console.log(months);
 
+
+
