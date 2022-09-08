@@ -88,3 +88,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Dest
 https://javascript.info/destructuring-assignment
 
 https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-deep-clone-an-object-in-javascript
+
+08/09/2022
+
+https://www.sqltutorial.org/
