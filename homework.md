@@ -10,6 +10,7 @@ watch till video number 6
 
 https://www.w3schools.com/html/html_formatting.asp
 
+
 https://www.freecodecamp.org/news/css-unit-guide/
 
 3/6/22
@@ -94,3 +95,8 @@ https://stackoverflow.com/questions/122102/what-is-the-most-efficient-way-to-dee
 https://www.sqltutorial.org/
 
 https://javascript.info/script-async-defer
+
+
+15/4/22
+
+https://reactjs.org/docs/components-and-props.html
