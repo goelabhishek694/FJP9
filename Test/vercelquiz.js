@@ -78,5 +78,41 @@ console.log(+"5"); // 5
 console.log(+123124); // 123124
 console.log(+undefined); //nan
 
+const settings = {
+  username: "RaselKazi",
+  level: 19,
+  health: 90,
+};
 
+const data = JSON.stringify(settings, ["level", "health"]);
+console.log(data);
+
+let config = {
+  alert: setInterval(() => {
+    console.log("Alert!");
+  }, 1000),
+};
+
+config = null;
+
+class Dog {
+  constructor(name) {
+    this.name = name;
+  }
+}
+
+Dog.prototype.bark = function () {
+  console.log(`Woof I am ${this.name}`);
+};
+
+const pet = new Dog("Mara");
+
+pet.bark();
+
+delete Dog.prototype.bark;
+
+pet.bark();
+
+let a = [1, 2, 3].push(4);
+console.log(a.push(5));
 
