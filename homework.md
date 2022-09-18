@@ -10,7 +10,6 @@ watch till video number 6
 
 https://www.w3schools.com/html/html_formatting.asp
 
-
 https://www.freecodecamp.org/news/css-unit-guide/
 
 3/6/22
@@ -96,7 +95,10 @@ https://www.sqltutorial.org/
 
 https://javascript.info/script-async-defer
 
-
 15/4/22
 
 https://reactjs.org/docs/components-and-props.html
+
+telegram link
+
+https://t.me/+gdO2znQir2NjN2Vl
