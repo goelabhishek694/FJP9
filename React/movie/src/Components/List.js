@@ -7,7 +7,8 @@ export default class List extends Component {
     super();
     this.state = {
       hover: "",
-      movies:[],
+      movies: [],
+      currPage: 1,
     };
   }
 
@@ -30,21 +31,54 @@ export default class List extends Component {
     // );
     // let data = await res.json();
     let data = await axios.get(
-      "https://api.themoviedb.org/3/movie/popular?api_key=1749ee86927c862e6ac40360e3eb8c0d&language=en-US&page=1"
+      `https://api.themoviedb.org/3/movie/popular?api_key=1749ee86927c862e6ac40360e3eb8c0d&language=en-US&page=1`
     );
     console.log(data.data);
     this.setState({
-      movies: [...data.data.results]
-    })
-    
+      movies: [...data.data.results],
+    });
+  }
 
+  // async componentDidUpdate() {
+  //   console.log("CDU is called ");
+  //   if (this.state.currPage!=) {
+  //     let data = await axios.get(
+  //       `https://api.themoviedb.org/3/movie/popular?api_key=1749ee86927c862e6ac40360e3eb8c0d&language=en-US&page=${this.state.currPage}`
+  //     );
+  //     console.log(data.data);
+  //     this.setState({
+  //       movies: [...data.data.results],
+  //     });
+  //   }
+  // }
+
+  async getUpdatedMovies() {
+    console.log("getUpdatedMovies is called");
+    let data = await axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=1749ee86927c862e6ac40360e3eb8c0d&language=en-US&page=${this.state.currPage}`
+      );
+      console.log(data.data);
+      this.setState({
+        movies: [...data.data.results],
+      });
   }
-  componentDidUpdate() {
-    console.log("CDU is called ");
-  }
+
   componentWillUnmount() {
     console.log("CWU is called ");
   }
+
+  handlePrevPage = () => {
+    if (this.state.currPage > 1) {
+      this.setState({ currPage: this.state.currPage - 1 },this.getUpdatedMovies)
+    }
+  };
+
+  handleNextPage = () => {
+     this.setState(
+       { currPage: this.state.currPage + 1 },
+       this.getUpdatedMovies
+     );
+  };
 
   render() {
     console.log("render method called ");
@@ -91,27 +125,15 @@ export default class List extends Component {
             </div>
             <nav aria-label="Page navigation example" className="pagination">
               <ul className="pagination">
-                <li className="page-item">
+                <li className="page-item" onClick={this.handlePrevPage}>
                   <a className="page-link" href="#">
                     Previous
                   </a>
                 </li>
                 <li className="page-item">
-                  <a className="page-link" href="#">
-                    1
-                  </a>
+                  <a className="page-link">{this.state.currPage}</a>
                 </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    2
-                  </a>
-                </li>
-                <li className="page-item">
-                  <a className="page-link" href="#">
-                    3
-                  </a>
-                </li>
-                <li className="page-item">
+                <li className="page-item" onClick={this.handleNextPage}>
                   <a className="page-link" href="#">
                     Next
                   </a>
