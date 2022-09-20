@@ -113,7 +113,7 @@ export default class List extends Component {
                       {/* <p class="card-text movie-text">{movie.overview}</p> */}
                       <div className="button-wrapper">
                         {this.state.hover == movieObj.id && (
-                          <a href="#" className="btn btn-info movie-button">
+                          <a className="btn btn-info movie-button">
                             Add to Favourites
                           </a>
                         )}
@@ -126,7 +126,7 @@ export default class List extends Component {
             <nav aria-label="Page navigation example" className="pagination">
               <ul className="pagination">
                 <li className="page-item" onClick={this.handlePrevPage}>
-                  <a className="page-link" href="#">
+                  <a className="page-link">
                     Previous
                   </a>
                 </li>
@@ -134,7 +134,7 @@ export default class List extends Component {
                   <a className="page-link">{this.state.currPage}</a>
                 </li>
                 <li className="page-item" onClick={this.handleNextPage}>
-                  <a className="page-link" href="#">
+                  <a className="page-link">
                     Next
                   </a>
                 </li>
