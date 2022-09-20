@@ -9,6 +9,7 @@ export default class List extends Component {
       hover: "",
       movies: [],
       currPage: 1,
+      fav:[],
     };
   }
 
@@ -55,12 +56,12 @@ export default class List extends Component {
   async getUpdatedMovies() {
     console.log("getUpdatedMovies is called");
     let data = await axios.get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=1749ee86927c862e6ac40360e3eb8c0d&language=en-US&page=${this.state.currPage}`
-      );
-      console.log(data.data);
-      this.setState({
-        movies: [...data.data.results],
-      });
+      `https://api.themoviedb.org/3/movie/popular?api_key=1749ee86927c862e6ac40360e3eb8c0d&language=en-US&page=${this.state.currPage}`
+    );
+    console.log(data.data);
+    this.setState({
+      movies: [...data.data.results],
+    });
   }
 
   componentWillUnmount() {
@@ -69,16 +70,21 @@ export default class List extends Component {
 
   handlePrevPage = () => {
     if (this.state.currPage > 1) {
-      this.setState({ currPage: this.state.currPage - 1 },this.getUpdatedMovies)
+      this.setState(
+        { currPage: this.state.currPage - 1 },
+        this.getUpdatedMovies
+      );
     }
   };
 
   handleNextPage = () => {
-     this.setState(
-       { currPage: this.state.currPage + 1 },
-       this.getUpdatedMovies
-     );
+    this.setState({ currPage: this.state.currPage + 1 }, this.getUpdatedMovies);
   };
+
+  handleFavourites = () => {
+    //if id already present -> remove
+    // else ->add 
+  }
 
   render() {
     console.log("render method called ");
@@ -113,7 +119,10 @@ export default class List extends Component {
                       {/* <p class="card-text movie-text">{movie.overview}</p> */}
                       <div className="button-wrapper">
                         {this.state.hover == movieObj.id && (
-                          <a className="btn btn-info movie-button">
+                          <a
+                            className="btn btn-info movie-button"
+                            onClick={this.handleFavourites}
+                          >
                             Add to Favourites
                           </a>
                         )}
@@ -126,17 +135,13 @@ export default class List extends Component {
             <nav aria-label="Page navigation example" className="pagination">
               <ul className="pagination">
                 <li className="page-item" onClick={this.handlePrevPage}>
-                  <a className="page-link">
-                    Previous
-                  </a>
+                  <a className="page-link">Previous</a>
                 </li>
                 <li className="page-item">
                   <a className="page-link">{this.state.currPage}</a>
                 </li>
                 <li className="page-item" onClick={this.handleNextPage}>
-                  <a className="page-link">
-                    Next
-                  </a>
+                  <a className="page-link">Next</a>
                 </li>
               </ul>
             </nav>

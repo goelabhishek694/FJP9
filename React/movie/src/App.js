@@ -14,8 +14,16 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<List />}/>
-          <Route path="/fav" element={<Favourites />}/>
+          <Route
+            path="/"
+            element={
+              <>
+                <Banner/>
+                <List />
+              </>
+            }
+          />
+          <Route path="/fav" element={<Favourites />} />
         </Routes>
       </BrowserRouter>
     </>
