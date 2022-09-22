@@ -9,9 +9,8 @@ export default class List extends Component {
       hover: "",
       movies: [],
       currPage: 1,
-      fav: [], //id of movies
+      fav: JSON.parse(localStorage.getItem("movies")).map((movieObj) => movieObj.id),  //[],  // id of movies
     };
-    this.favouriteMovies = []; //object of movie
   }
 
   handleEnter = (id) => {
@@ -83,17 +82,20 @@ export default class List extends Component {
   };
 
   handleFavourites = (movieObj) => {
+    let favouriteMovies=JSON.parse(localStorage.getItem("movies")) || []
     if (this.state.fav.includes(movieObj.id)) {
       //if id already present -> remove
-      this.favouriteMovies=this.favouriteMovies.filter(movie=>movie.id!=movieObj.id)
+      favouriteMovies=favouriteMovies.filter(movie=>movie.id!=movieObj.id)
 
     }
     else {
       // else ->add 
-      this.favouriteMovies.push(movieObj);
+      favouriteMovies.push(movieObj);
     }
 
-    let tempData = this.favouriteMovies.map(movieObj => movieObj.id);
+    localStorage.setItem("movies", JSON.stringify(favouriteMovies));
+
+    let tempData = favouriteMovies.map(movieObj => movieObj.id);
     this.setState({
       fav:[...tempData]
     })
@@ -101,8 +103,8 @@ export default class List extends Component {
   }
 
   render() {
-    console.log("render method called ");
-    console.log("qwerty",this.favouriteMovies);
+    // console.log("render method called ");
+    console.log("qwerty", JSON.parse(localStorage.getItem("movies")));
     // let allMovies = movies.results;
     return (
       <>
@@ -138,7 +140,9 @@ export default class List extends Component {
                             className="btn btn-info movie-button"
                             onClick={()=>this.handleFavourites(movieObj)}
                           >
-                            Add to Favourites
+                            {
+                              this.state.fav.includes(movieObj.id)? `Remove from Favourites`: `Add to Favourites`
+                            }
                           </a>
                         )}
                       </div>
