@@ -9,8 +9,9 @@ export default class List extends Component {
       hover: "",
       movies: [],
       currPage: 1,
-      fav:[],
+      fav: [], //id of movies
     };
+    this.favouriteMovies = []; //object of movie
   }
 
   handleEnter = (id) => {
@@ -81,13 +82,27 @@ export default class List extends Component {
     this.setState({ currPage: this.state.currPage + 1 }, this.getUpdatedMovies);
   };
 
-  handleFavourites = () => {
-    //if id already present -> remove
-    // else ->add 
+  handleFavourites = (movieObj) => {
+    if (this.state.fav.includes(movieObj.id)) {
+      //if id already present -> remove
+      this.favouriteMovies=this.favouriteMovies.filter(movie=>movie.id!=movieObj.id)
+
+    }
+    else {
+      // else ->add 
+      this.favouriteMovies.push(movieObj);
+    }
+
+    let tempData = this.favouriteMovies.map(movieObj => movieObj.id);
+    this.setState({
+      fav:[...tempData]
+    })
+
   }
 
   render() {
     console.log("render method called ");
+    console.log("qwerty",this.favouriteMovies);
     // let allMovies = movies.results;
     return (
       <>
@@ -121,7 +136,7 @@ export default class List extends Component {
                         {this.state.hover == movieObj.id && (
                           <a
                             className="btn btn-info movie-button"
-                            onClick={this.handleFavourites}
+                            onClick={()=>this.handleFavourites(movieObj)}
                           >
                             Add to Favourites
                           </a>

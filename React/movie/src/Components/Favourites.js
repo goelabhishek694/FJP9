@@ -59,8 +59,9 @@ export default class Favourites extends Component {
 
   handleGenre = (e) => {
     let genre = e.target.innerText;
+    //movies ko filter 
     this.setState({
-      currGenre: genre
+      currGenre: genre,
     });
     // console.log(genre);
   }
@@ -87,67 +88,73 @@ export default class Favourites extends Component {
       10752: "War",
       37: "Western",
     };
+    let filteredMovies = [];
+    if (this.state.currGenre != "All Genre") {
+      filteredMovies = this.state.movies.filter(
+        (movieObj) => genreId[movieObj.genre_ids[0]] == this.state.currGenre
+      );
+    }
+    else filteredMovies = this.state.movies;
     return (
-     
-        <div className="row">
-          <div className="col-3 p-5">
-            <ul class="list-group">
-              {this.state.genre.map((genre) => {
-                return this.state.currGenre == genre ? (
-                  <li class="list-group-item active">{genre}</li>
-                ) : (
-                  <li class="list-group-item" onClick={this.handleGenre}>
-                    {genre}
-                  </li>
-                );
-              })}
-              {/* <li class="list-group-item active">All Genre</li>
+      <div className="row">
+        <div className="col-3 p-5">
+          <ul class="list-group">
+            {this.state.genre.map((genre) => {
+              return this.state.currGenre == genre ? (
+                <li class="list-group-item active">{genre}</li>
+              ) : (
+                <li class="list-group-item" onClick={this.handleGenre}>
+                  {genre}
+                </li>
+              );
+            })}
+            {/* <li class="list-group-item active">All Genre</li>
               <li class="list-group-item">Fantasy</li>
               <li class="list-group-item">Action</li>
               <li class="list-group-item">Animation</li> */}
-            </ul>
-          </div>
-          <div className="col p-5">
-            <div className="row">
-              <input type="text" className="col-8" placeholder="Search"></input>
-              <input
-                type="number"
-                className="col"
-                placeholder="Results per page"
-              ></input>
-            </div>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Title</th>
-                  <th scope="col">Genre</th>
-                  <th scope="col">Popularity</th>
-                  <th scope="col">Rating</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {this.state.movies.map((movieObj) => (
-                  <tr>
-                    <td>
-                      <img
-                        src={`https://image.tmdb.org/t/p/original/${movieObj.backdrop_path}`}
-                        style={{ width: "8rem" }}
-                      />
-                      {movieObj.original_title}
-                    </td>
-                    <td>{genreId[movieObj.genre_ids[0]]}</td>
-                    <td>{movieObj.popularity}</td>
-                    <td>{movieObj.vote_average}</td>
-                    <td>
-                      <button className="btn btn-outline-danger">Delete</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          </ul>
         </div>
+        <div className="col p-5">
+          <div className="row">
+            <input type="text" className="col-8" placeholder="Search"></input>
+            <input
+              type="number"
+              className="col"
+              placeholder="Results per page"
+            ></input>
+          </div>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Popularity</th>
+                <th scope="col">Rating</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredMovies.map((movieObj) => (
+                <tr>
+                  <td>
+                    <img
+                      src={`https://image.tmdb.org/t/p/original/${movieObj.backdrop_path}`}
+                      style={{ width: "8rem" }}
+                    />
+                    {movieObj.original_title}
+                  </td>
+                  <td>{genreId[movieObj.genre_ids[0]]}</td>
+                  <td>{movieObj.popularity}</td>
+                  <td>{movieObj.vote_average}</td>
+                  <td>
+                    <button className="btn btn-outline-danger">Delete</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     );
   }
 }
