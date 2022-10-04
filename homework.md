@@ -102,3 +102,6 @@ https://reactjs.org/docs/components-and-props.html
 telegram link
 
 https://t.me/+gdO2znQir2NjN2Vl
+
+react test
+https://docs.google.com/document/d/1IIn7hQRgRQP3kZkfM-Nv6I9l4w7rumTxUGU8Ow4PXH8/edit?usp=sharing
