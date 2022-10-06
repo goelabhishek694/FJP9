@@ -188,6 +188,46 @@ var ans = arr.reduce(getCount, {});
 console.log(ans);
 
 
+// deep clone 
+
+let user = {
+  name: "Abhishek",
+  age: 23,
+  residence: {
+    city: "New Delhi",
+    country:"India"
+  },
+  education:["cse","12th"],
+  hobby:"music"
+}
+
+const deepClone = (obj) => {
+  //object.assign -> shallow copy 
+  let clonedObj = Object.assign({}, obj);
+  Object.keys(clonedObj).forEach((key) => {
+    let type = typeof clonedObj[key];
+    // if (type == 'object' && clonedObj[key].length > 0) {
+    //   //it is an arr
+
+    // }
+    if (type == 'object') {
+      clonedObj[key] = deepClone(obj[key]);
+    }
+    else {
+      clonedObj[key] = obj[key];
+    }
+  })
+  return clonedObj;
+}
+
+let newObj = deepClone(user);
+
+
+
+
+
+
+
 
 
 
