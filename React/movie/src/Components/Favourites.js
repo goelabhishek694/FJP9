@@ -10,7 +10,7 @@ export default class Favourites extends Component {
       currGenre: "All Genre",
       currText: "",
       limit: 5,
-      currPage:1
+      currPage: 1,
     };
   }
   async componentDidMount() {
@@ -112,7 +112,17 @@ export default class Favourites extends Component {
     this.setState({
       movies: [...allMovies],
     });
-  };  
+  };
+
+  handelDelete = (id) => {
+    let newMovies = this.state.movies.filter((movieObj) => {
+      return movieObj.id!=id
+    })
+    this.setState({
+      movies: [...newMovies]
+    });
+    localStorage.setItem("movies", JSON.stringify(newMovies));
+  }
 
   render() {
     let genreId = {
@@ -157,10 +167,10 @@ export default class Favourites extends Component {
 
     let numOfPages = Math.ceil(filteredMovies.length / this.state.limit);
     let pagesArr = [];
-    for (let i = 1; i <= numOfPages; i++){
+    for (let i = 1; i <= numOfPages; i++) {
       pagesArr.push(i);
     }
-    
+
     let si = (this.state.currPage - 1) * this.state.limit;
     let ei = si + this.state.limit;
     filteredMovies = filteredMovies.slice(si, ei);
@@ -196,7 +206,7 @@ export default class Favourites extends Component {
               type="number"
               className="col"
               value={this.state.limit}
-              onChange={(e) => this.setState({ limit: e.target.value })}
+              onChange={(e) => this.setState({ limit: Number(e.target.value) })}
               placeholder="Results per page"
             ></input>
           </div>
@@ -241,7 +251,12 @@ export default class Favourites extends Component {
                   <td>{movieObj.popularity}</td>
                   <td>{movieObj.vote_average}</td>
                   <td>
-                    <button className="btn btn-outline-danger">Delete</button>
+                    <button
+                      className="btn btn-outline-danger"
+                      onClick={()=>this.handelDelete(movieObj.id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
@@ -250,16 +265,16 @@ export default class Favourites extends Component {
         </div>
         <nav aria-label="Page navigation example" className="pagination">
           <ul className="pagination">
-            {
-            pagesArr.map((pageNum)=>
-            {
-              return(
-              <li className="page-item" onClick={()=>this.setState({currPage:pageNum})}>
-                  <a className="page-link">{ pageNum}</a>
-            </li>
-              )
-            }
-          )}
+            {pagesArr.map((pageNum) => {
+              return (
+                <li
+                  className="page-item"
+                  onClick={() => this.setState({ currPage: pageNum })}
+                >
+                  <a className="page-link">{pageNum}</a>
+                </li>
+              );
+            })}
           </ul>
         </nav>
       </div>
