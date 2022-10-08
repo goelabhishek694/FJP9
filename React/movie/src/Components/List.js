@@ -9,7 +9,9 @@ export default class List extends Component {
       hover: "",
       movies: [],
       currPage: 1,
-      fav: JSON.parse(localStorage.getItem("movies")).map((movieObj) => movieObj.id),  //[],  // id of movies
+      fav: localStorage.getItem("movies")?JSON.parse(localStorage.getItem("movies")).map(
+        (movieObj) => movieObj.id
+      ) : [], //[],  // id of movies
     };
   }
 
