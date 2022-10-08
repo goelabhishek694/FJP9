@@ -9,6 +9,8 @@ export default class Favourites extends Component {
       genre: [],
       currGenre: "All Genre",
       currText: "",
+      limit: 5,
+      currPage:1
     };
   }
   async componentDidMount() {
@@ -152,6 +154,16 @@ export default class Favourites extends Component {
       );
     }
     // else filteredMovies = this.state.movies;
+
+    let numOfPages = Math.ceil(filteredMovies.length / this.state.limit);
+    let pagesArr = [];
+    for (let i = 1; i <= numOfPages; i++){
+      pagesArr.push(i);
+    }
+    
+    let si = (this.state.currPage - 1) * this.state.limit;
+    let ei = si + this.state.limit;
+    filteredMovies = filteredMovies.slice(si, ei);
     return (
       <div className="row">
         <div className="col-3 p-5">
@@ -183,6 +195,8 @@ export default class Favourites extends Component {
             <input
               type="number"
               className="col"
+              value={this.state.limit}
+              onChange={(e) => this.setState({ limit: e.target.value })}
               placeholder="Results per page"
             ></input>
           </div>
@@ -234,6 +248,20 @@ export default class Favourites extends Component {
             </tbody>
           </table>
         </div>
+        <nav aria-label="Page navigation example" className="pagination">
+          <ul className="pagination">
+            {
+            pagesArr.map((pageNum)=>
+            {
+              return(
+              <li className="page-item" onClick={()=>this.setState({currPage:pageNum})}>
+                  <a className="page-link">{ pageNum}</a>
+            </li>
+              )
+            }
+          )}
+          </ul>
+        </nav>
       </div>
     );
   }
