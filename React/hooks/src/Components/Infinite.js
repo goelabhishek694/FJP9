@@ -9,7 +9,7 @@ function Infinite() {
        document.title = `Button is clicked ${count} times`;
     //    let rnum = Math.random() * 100;
     //    setCount(rnum);
-       setCount(10);
+       setCount(13);
    });
    console.log("render");
    return (
