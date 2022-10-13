@@ -9,17 +9,9 @@
 
 .signup-card{
     width:25rem;
-    height:28rem;
+    height:20.5rem;
     border: 1px solid #ccc;
     padding: 1rem;
-}
-
-.tnc{
-    width:25rem;
-    padding:1rem;
-    margin-top: 0.5rem;
-    color:gray;
-    text-align: center;
 }
 
 .bottom-card{
