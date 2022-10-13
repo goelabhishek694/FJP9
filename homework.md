@@ -95,7 +95,7 @@ https://www.sqltutorial.org/
 
 https://javascript.info/script-async-defer
 
-15/4/22
+15/09/22
 
 https://reactjs.org/docs/components-and-props.html
 
@@ -105,3 +105,8 @@ https://t.me/+gdO2znQir2NjN2Vl
 
 react test
 https://docs.google.com/document/d/1IIn7hQRgRQP3kZkfM-Nv6I9l4w7rumTxUGU8Ow4PXH8/edit?usp=sharing
+
+13/10/22
+
+https://reactjs.org/docs/getting-started.html
+all 12 articles in main concepts section
