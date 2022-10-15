@@ -1,0 +1,60 @@
+.feed-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.navbar{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.nav-icons-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav-icons{
+    color: black;
+    margin: 0.5rem;
+}
+
+.upload-btn{
+    margin-top :1rem;
+}
+
+.videos-container{
+height: 70vh;
+overflow-y: scroll;
+
+}
+
+.videos-container::-webkit-scrollbar{
+    display: none;
+}
+
+.post-container{
+    height: 100%;
+    width:20rem;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+
+}
+
+.post-container>video{
+    height: 100%;
+    width:20rem;
+    background-color: pink;
+    border-radius: 20px;
+    object-fit: contain;
+}
+
+@media screen and (max-width:500px){
+    .nav-icons{
+        display: none;
+    }
+}
+
