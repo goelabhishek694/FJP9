@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
+  createUserWithEmailAndPassword,
 } from "firebase/auth";
 function AuthWrapper({children}) {
   console.log("hello in AuthWrapper");
@@ -13,12 +14,12 @@ function AuthWrapper({children}) {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) {
+      // if (user) {
         // User is signed in, see docs for a list of available properties
         setUser(user)
-        const uid = user.uid;
+        
         // ...
-      }
+      // }
       // else {
       //   // User is signed out
       //   // ...
@@ -39,6 +40,10 @@ function AuthWrapper({children}) {
   function forgetPassword(email) {
     return sendPasswordResetEmail(auth,email)
   }
+
+  function signup(email, password) {
+    return createUserWithEmailAndPassword(auth, email, password)
+  }
   
 
     const store = {
@@ -46,6 +51,7 @@ function AuthWrapper({children}) {
       logout,
       user,
       forgetPassword,
+      signup,
     };
     return (
       <AuthContext.Provider value={store}>
