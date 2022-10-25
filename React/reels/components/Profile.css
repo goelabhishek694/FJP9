@@ -1,0 +1,23 @@
+.profile-intro{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.profile-posts{
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.profile-posts>video{
+    height: 30rem;
+    width:15rem;
+    border: 2px solid black;
+    padding: 0.5rem;
+}

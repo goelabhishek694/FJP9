@@ -8,7 +8,8 @@ import IconButton from "@mui/material/IconButton";
 import Link from "next/link";
 import { AuthContext } from "../../context/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { storage } from "../../firebase";
+import { storage, db } from "../../firebase";
+import { doc, setDoc } from "firebase/firestore";
 
 function index() {
 
@@ -54,8 +55,16 @@ function index() {
         },
         () => {
           // Upload completed successfully, now we can get the download URL
-          getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
             console.log("File available at", downloadURL);
+            let userData = {
+              fullName,
+              email,
+              password,
+              profilePhoto:downloadURL
+            }
+
+            await setDoc(doc(db, "users", userInfo.user.uid), userData);
           });
         }
       );
