@@ -1,51 +1,50 @@
 import React, { useContext, useState, useEffect } from "react";
 import Image from "next/image";
-import logo from "../../assets/Instagram.jpeg";
+import logo from "../assets/Instagram.jpeg";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 // import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 // import IconButton from "@mui/material/IconButton";
 import { Carousel } from "react-responsive-carousel";
-import bg1 from "../../assets/bg1.jpg";
-import bg2 from "../../assets/bg2.jpg";
-import bg3 from "../../assets/bg3.jpg";
-import bg4 from "../../assets/bg4.jpg";
-import bg5 from "../../assets/bg5.jpg";
-import { AuthContext } from "../../context/auth";
+import bg1 from "../assets/bg1.jpg";
+import bg2 from "../assets/bg2.jpg";
+import bg3 from "../assets/bg3.jpg";
+import bg4 from "../assets/bg4.jpg";
+import bg5 from "../assets/bg5.jpg";
+import { AuthContext } from "../context/auth";
 import { useRouter } from "next/router";
-import Link from "next/link";
+
 function index() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { login,user } = useContext(AuthContext);
+  const { forgetPassword, user } = useContext(AuthContext);
   const router = useRouter();
   useEffect(() => {
     if (user) {
-      router.push('/')
+      router.push("/");
     }
-  },[user])
+  }, [user]);
+    
   let handleClick = async () => {
     try {
       console.log(email);
-      console.log(password);
       setLoading(true);
-      setError('');
-      await login(email, password);
-      console.log("logged in")
-    }
-    catch (err) {
-      console.log("err",JSON.stringify(err));
-      setError(err.code); 
+      setError("");
+        await forgetPassword(email);
+        console.log("email sent");
+        router.push('/login')
+    } catch (err) {
+      console.log("err", JSON.stringify(err));
+      setError(err.code);
       setTimeout(() => {
-        setError('')
-      },2000)
+        setError("");
+      }, 2000);
     }
 
     setLoading(false);
-  }
+  };
 
   return (
     <div className="login-container">
@@ -86,23 +85,9 @@ function index() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <TextField
-            id="outlined-basic"
-            label="Password"
-            fullWidth
-            type="password"
-            variant="outlined"
-            margin="dense"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
           {/* if error , then show error */}
           {error != "" && <div style={{ color: "red" }}>{error}</div>}
-          <Link href="/forgot">
-            <div style={{ color: "blue", marginTop: "1rem" }}>
-              Forget Password
-            </div>
-          </Link>
+          
 
           <Button
             style={{ marginTop: "1rem" }}
@@ -110,14 +95,12 @@ function index() {
             fullWidth
             onClick={handleClick}
           >
-            Login
+            Send Mail
           </Button>
         </div>
         <div className="bottom-card">
           Don't Have an account ?{" "}
-          <Link href="/signup">
-            <span style={{ color: "blueviolet" }}>Signup</span>
-          </Link>
+          <span style={{ color: "blueviolet" }}>Signup</span>
         </div>
       </div>
     </div>
