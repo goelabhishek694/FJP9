@@ -61,8 +61,9 @@ function index() {
               fullName,
               email,
               password,
-              profilePhoto:downloadURL
-            }
+              profilePhoto: downloadURL,
+              uid: userInfo.user.uid,
+            };
 
             await setDoc(doc(db, "users", userInfo.user.uid), userData);
           });
