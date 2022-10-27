@@ -1,9 +1,16 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import Feed from '../components/Feed';
-import styles from '../styles/Home.module.css'
-
+import Head from "next/head";
+import Image from "next/image";
+import Feed from "../components/Feed";
+import styles from "../styles/Home.module.css";
+import { AuthContext } from "../context/auth";
+import { useRouter } from "next/router";
+import React, { useContext } from "react";
 export default function Home() {
+  const { user } = useContext(AuthContext);
+  const Redirect = () => {
+    const router = useRouter();
+    router.push("/login");
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +19,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <h1>Welcome</h1> */}
-      <Feed/>
+      {user?.uid ? <Feed /> : <Redirect />}
     </div>
   );
 }
