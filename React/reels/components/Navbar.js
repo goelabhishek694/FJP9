@@ -18,7 +18,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import ExploreIcon from "@mui/icons-material/Explore";
 import { AuthContext } from "../context/auth";
 import { useRouter } from "next/router";
-
+import Link from 'next/link'
 const ResponsiveAppBar = ({userData}) => {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
@@ -140,7 +140,7 @@ const ResponsiveAppBar = ({userData}) => {
             <ExploreIcon fontSize="large" className="nav-icons" />
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src={userData.profilePhoto} />
+                <Avatar alt="Remy Sharp" src={userData?.profilePhoto} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -165,12 +165,16 @@ const ResponsiveAppBar = ({userData}) => {
                 </MenuItem>
               ))} */}
               <MenuItem onClick={handleCloseUserMenu}>
-                <Typography textAlign="center">Profile</Typography>
+                <Link href='/profile'>
+                  <Typography textAlign="center">Profile</Typography>
+                </Link>
               </MenuItem>
-              <MenuItem onClick={() => {
-                handleLogout()
-                handleCloseUserMenu()
-              }}>
+              <MenuItem
+                onClick={() => {
+                  handleLogout();
+                  handleCloseUserMenu();
+                }}
+              >
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>
