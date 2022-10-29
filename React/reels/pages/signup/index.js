@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import logo from "../../assets/Instagram.jpeg";
 import TextField from "@mui/material/TextField";
@@ -10,6 +10,7 @@ import { AuthContext } from "../../context/auth";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { storage, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
+import { useRouter } from "next/router";
 
 function index() {
 
@@ -20,7 +21,13 @@ function index() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { signup, user } = useContext(AuthContext);
-
+  const router = useRouter();
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+  }, [user])
+  
   let handleClick = async () => {
     console.log(email);
     console.log(password);

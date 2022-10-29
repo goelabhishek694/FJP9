@@ -42,6 +42,8 @@ overflow-y: scroll;
     /* border: 1px solid black; */
     margin-bottom: 1rem;
     position: relative;
+    margin-top: 1rem;
+
 
 }
 
@@ -52,6 +54,15 @@ overflow-y: scroll;
     border-radius: 20px;
     object-fit: contain;
 }
+.videos-info{
+    position: absolute;
+    width: 20rem;
+    display: flex;
+    justify-content: space-between;
+    height: 3rem;
+    margin
+}
+
 
 @media screen and (max-width:500px){
     .nav-icons{
