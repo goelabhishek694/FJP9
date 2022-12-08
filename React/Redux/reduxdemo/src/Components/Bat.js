@@ -16,7 +16,7 @@ function Bat(props) {
 //mapStateToProps-> it gets it's value from reducer function, then it returns an object to the component (as props)in which it defined with the help of connect. Then component uses that object 
 const mapStateToProps = (state) => {
     return {
-        batss:state.bats
+        batss:state.bat.bats
     }
 }
 
